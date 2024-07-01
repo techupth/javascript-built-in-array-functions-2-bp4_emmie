@@ -374,18 +374,18 @@ const bills = [
 ];
 
 // Start coding here
-  function getTotalMembers(bills) {
-    // กรองเฉพาะรายการที่มีสมาชิกและแปลงให้เป็นชื่อสมาชิก
-    const memberNames = bills
-      .filter(bill => bill.member !== null)
-      .map(bill => bill.member.name);
-  
-    // ใช้ Set เพื่อเก็บชื่อสมาชิกที่ไม่ซ้ำกัน
-    const totalMembers = new Set(memberNames);
-  
-    // คืนค่าจำนวนสมาชิกที่ไม่ซ้ำกัน
-    return totalMembers.size;
-  }
-  
-  const totalMembers = getTotalMembers(bills);
-  console.log(`Unique Members Count: ${totalMembers}`);
+    const totalMembers = bills
+  .filter(function (bill) {
+    return bill.member !== null;
+  })
+  .map(function (bill) {
+    return bill.member.name;
+  })
+  .reduce(function (accumulator, currentValue) {
+    if (!accumulator.includes(currentValue)) {
+      accumulator.push(currentValue);
+    }
+    return accumulator;
+  }, []).length;
+
+console.log("Unique Members Count: "+ totalMembers);

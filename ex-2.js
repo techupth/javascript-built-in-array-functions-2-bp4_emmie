@@ -375,4 +375,8 @@ const bills = [
 
 // Start coding here
 
-const newBills;
+function newBill(bills){
+  return bills.filter(bills => bills.member !== null);
+}
+
+  console.log(newBill(bills))

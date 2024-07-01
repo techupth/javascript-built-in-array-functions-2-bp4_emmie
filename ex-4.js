@@ -374,4 +374,18 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+  function getTotalMembers(bills) {
+    // กรองเฉพาะรายการที่มีสมาชิกและแปลงให้เป็นชื่อสมาชิก
+    const memberNames = bills
+      .filter(bill => bill.member !== null)
+      .map(bill => bill.member.name);
+  
+    // ใช้ Set เพื่อเก็บชื่อสมาชิกที่ไม่ซ้ำกัน
+    const totalMembers = new Set(memberNames);
+  
+    // คืนค่าจำนวนสมาชิกที่ไม่ซ้ำกัน
+    return totalMembers.size;
+  }
+  
+  const totalMembers = getTotalMembers(bills);
+  console.log(`Unique Members Count: ${totalMembers}`);

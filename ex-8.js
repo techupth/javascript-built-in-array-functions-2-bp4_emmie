@@ -373,6 +373,15 @@ const bills = [
     },
 ];
 
-// Start coding here
+let totalPaidByLocation = bills
 
-const totalPaidByLocation;
+.reduce((accumulator, currentValue) => {
+  if (accumulator[currentValue.location]) {
+    accumulator[currentValue.location] += currentValue.total;
+  } else {
+    accumulator[currentValue.location] = currentValue.total;
+  }
+  return accumulator;
+}, {});
+
+console.log(totalPaidByLocation);
